@@ -1,0 +1,2 @@
+# Actividad_6_FARMACIA_KARI
+act6_Farmacia
