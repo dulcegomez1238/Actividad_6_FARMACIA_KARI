@@ -1,0 +1,135 @@
+{% extends 'base.html' %}
+
+{% block title %}Inventario{% endblock %}
+
+{% block content %}
+<div class="card card-custom">
+    <div class="card-header bg-warning text-white d-flex justify-content-between align-items-center">
+        <h4 class="mb-0">
+            <i class="bi bi-clipboard-data"></i> Control de Inventario
+        </h4>
+        <a href="{% url 'agregar_inventario' %}" class="btn btn-light">
+            <i class="bi bi-plus-circle"></i> Nuevo Registro
+        </a>
+    </div>
+    <div class="card-body">
+        <div class="row mb-4">
+            <div class="col-md-3">
+                <div class="card bg-primary text-white">
+                    <div class="card-body text-center">
+                        <h6 class="card-title">Total Items</h6>
+                        <h3>{{ inventarios|length }}</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card bg-success text-white">
+                    <div class="card-body text-center">
+                        <h6 class="card-title">En Stock</h6>
+                        <h3>
+                            {% with total=0 %}
+                                {% for item in inventarios %}
+                                    {% if item.cantidad > 0 %}
+                                        {% widthratio total|add:1 1 1 as total %}
+                                    {% endif %}
+                                {% endfor %}
+                                {{ total }}
+                            {% endwith %}
+                        </h3>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card bg-danger text-white">
+                    <div class="card-body text-center">
+                        <h6 class="card-title">Bajo Stock</h6>
+                        <h3>
+                            {% with bajo=0 %}
+                                {% for item in inventarios %}
+                                    {% if item.cantidad < 10 %}
+                                        {% widthratio bajo|add:1 1 1 as bajo %}
+                                    {% endif %}
+                                {% endfor %}
+                                {{ bajo }}
+                            {% endwith %}
+                        </h3>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card bg-info text-white">
+                    <div class="card-body text-center">
+                        <h6 class="card-title">Ubicaciones</h6>
+                        <h3>
+                            {% with ubicaciones=inventarios|slice:":5"|length %}
+                                {{ ubicaciones }}
+                            {% endwith %}
+                        </h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="table-responsive">
+            <table class="table table-custom table-hover">
+                <thead class="table-dark">
+                    <tr>
+                        <th>ID</th>
+                        <th>Producto</th>
+                        <th>Tipo</th>
+                        <th>Cantidad</th>
+                        <th>Ubicación</th>
+                        <th>Caducidad</th>
+                        <th>Proveedor</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for inventario in inventarios %}
+                    <tr>
+                        <td>{{ inventario.id }}</td>
+                        <td>{{ inventario.nombre }}</td>
+                        <td>
+                            <span class="badge bg-info">{{ inventario.tipo }}</span>
+                        </td>
+                        <td>
+                            {% if inventario.cantidad > 20 %}
+                                <span class="badge bg-success">{{ inventario.cantidad }}</span>
+                            {% elif inventario.cantidad > 5 %}
+                                <span class="badge bg-warning">{{ inventario.cantidad }}</span>
+                            {% else %}
+                                <span class="badge bg-danger">{{ inventario.cantidad }}</span>
+                            {% endif %}
+                        </td>
+                        <td>{{ inventario.ubicacion }}</td>
+                        <td>{{ inventario.fecha_caducidad|date:"d/m/Y" }}</td>
+                        <td>{{ inventario.proveedor.nombre }}</td>
+                        <td>
+                            <div class="btn-group" role="group">
+                                <a href="#" class="btn btn-sm btn-info" title="Ver Detalles">
+                                    <i class="bi bi-eye"></i>
+                                </a>
+                                <a href="{% url 'actualizar_inventario' inventario.id %}" class="btn btn-sm btn-warning" title="Editar">
+                                    <i class="bi bi-pencil"></i>
+                                </a>
+                                <a href="{% url 'borrar_inventario' inventario.id %}" class="btn btn-sm btn-danger" title="Eliminar">
+                                    <i class="bi bi-trash"></i>
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="8" class="text-center">
+                            <div class="alert alert-warning">
+                                <i class="bi bi-exclamation-triangle"></i> No hay registros en el inventario
+                            </div>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

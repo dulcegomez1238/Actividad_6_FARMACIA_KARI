@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+
+{% block title %}Inicio - Farmacia{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-8">
+        <div class="card card-custom mb-4">
+            <div class="card-body">
+                <h2 class="card-title text-primary">
+                    <i class="bi bi-capsule-pill"></i> Bienvenido al Sistema de Farmacia
+                </h2>
+                <p class="card-text">
+                    Sistema integral para la gestión de farmacias. Permite administrar proveedores, 
+                    productos e inventario de manera eficiente y segura.
+                </p>
+                
+                <div class="row mt-4">
+                    <div class="col-md-4">
+                        <div class="card bg-light">
+                            <div class="card-body text-center">
+                                <i class="bi bi-truck display-4 text-primary"></i>
+                                <h5>Proveedores</h5>
+                                <p>Gestión completa de proveedores</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card bg-light">
+                            <div class="card-body text-center">
+                                <i class="bi bi-capsule display-4 text-success"></i>
+                                <h5>Productos</h5>
+                                <p>Control de medicamentos</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card bg-light">
+                            <div class="card-body text-center">
+                                <i class="bi bi-box-seam display-4 text-warning"></i>
+                                <h5>Inventario</h5>
+                                <p>Gestión de stock</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-4">
+        <div class="card card-custom">
+            <div class="card-body">
+                <h4 class="card-title">
+                    <i class="bi bi-info-circle"></i> Información del Sistema
+                </h4>
+                <p class="card-text">
+                    <strong>Versión:</strong> 1.0.0<br>
+                    <strong>Desarrollado con:</strong> Django 4.2<br>
+                    <strong>Base de datos:</strong> SQLite<br>
+                    <strong>Puerto:</strong> 0080
+                </p>
+                <img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" 
+                     alt="Farmacia" class="img-fluid rounded">
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

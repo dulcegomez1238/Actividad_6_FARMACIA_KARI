@@ -1,0 +1,64 @@
+<nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="{% url 'inicio' %}">
+            <i class="bi bi-capsule-pill"></i>
+            Sistema de Administración Farmacia
+        </a>
+        
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'inicio' %}">
+                        <i class="bi bi-house-door"></i> Inicio
+                    </a>
+                </li>
+                
+                <!-- Proveedor Dropdown -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                        <i class="bi bi-truck"></i> Proveedor
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="{% url 'agregar_proveedor' %}">Agregar Proveedor</a></li>
+                        <li><a class="dropdown-item" href="{% url 'ver_proveedores' %}">Ver Proveedores</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="#">Actualizar Proveedor</a></li>
+                        <li><a class="dropdown-item" href="#">Borrar Proveedor</a></li>
+                    </ul>
+                </li>
+                
+                <!-- Producto Dropdown -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                        <i class="bi bi-capsule"></i> Producto
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="{% url 'agregar_producto' %}">Agregar Producto</a></li>
+                        <li><a class="dropdown-item" href="{% url 'ver_productos' %}">Ver Productos</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="#">Actualizar Producto</a></li>
+                        <li><a class="dropdown-item" href="#">Borrar Producto</a></li>
+                    </ul>
+                </li>
+                
+                <!-- Inventario Dropdown -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                        <i class="bi bi-box-seam"></i> Inventario
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="{% url 'agregar_inventario' %}">Agregar Inventario</a></li>
+                        <li><a class="dropdown-item" href="{% url 'ver_inventarios' %}">Ver Inventarios</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="#">Actualizar Inventario</a></li>
+                        <li><a class="dropdown-item" href="#">Borrar Inventario</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>

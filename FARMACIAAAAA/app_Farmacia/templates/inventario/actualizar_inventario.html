@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+
+{% block title %}Actualizar Inventario{% endblock %}
+
+{% block content %}
+<div class="card card-custom">
+    <div class="card-header bg-warning text-white">
+        <h4 class="mb-0">
+            <i class="bi bi-pencil-square"></i> Actualizar Inventario
+        </h4>
+    </div>
+    <div class="card-body">
+        <form method="POST">
+            {% csrf_token %}
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label class="form-label">Nombre del Producto (Inventario)</label>
+                    <input type="text" class="form-control" name="nombre" value="{{ inventario.nombre }}" required>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label class="form-label">Tipo</label>
+                    <select class="form-select" name="tipo" required>
+                        <option value="Medicamento" {% if inventario.tipo == "Medicamento" %}selected{% endif %}>Medicamento</option>
+                        <option value="Vitaminas" {% if inventario.tipo == "Vitaminas" %}selected{% endif %}>Vitaminas</option>
+                        <option value="Cuidado Personal" {% if inventario.tipo == "Cuidado Personal" %}selected{% endif %}>Cuidado Personal</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label class="form-label">Producto (Relación)</label>
+                    <select class="form-select" name="producto" required>
+                        {% for producto in productos %}
+                        <option value="{{ producto.id }}" {% if producto.id == inventario.producto.id %}selected{% endif %}>
+                            {{ producto.nombre }}
+                        </option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label class="form-label">Proveedor</label>
+                    <select class="form-select" name="proveedor" required>
+                        {% for proveedor in proveedores %}
+                        <option value="{{ proveedor.id }}" {% if proveedor.id == inventario.proveedor.id %}selected{% endif %}>
+                            {{ proveedor.nombre }}
+                        </option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label class="form-label">Fecha de Caducidad</label>
+                    <input type="date" class="form-control" name="fecha_caducidad" value="{{ inventario.fecha_caducidad|date:'Y-m-d' }}" required>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label class="form-label">Contenido</label>
+                    <input type="text" class="form-control" name="contenido" value="{{ inventario.contenido }}" required>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label class="form-label">Cantidad</label>
+                    <input type="number" class="form-control" name="cantidad" value="{{ inventario.cantidad }}" required>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label class="form-label">Ubicación</label>
+                    <input type="text" class="form-control" name="ubicacion" value="{{ inventario.ubicacion }}" required>
+                </div>
+            </div>
+            
+            <div class="d-flex justify-content-between">
+                <a href="{% url 'ver_inventarios' %}" class="btn btn-secondary">
+                    <i class="bi bi-x-circle"></i> Cancelar
+                </a>
+                <button type="submit" class="btn btn-warning">
+                    <i class="bi bi-check-circle"></i> Actualizar Inventario
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
