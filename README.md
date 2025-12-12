@@ -1,5 +1,11 @@
 # Actividad_6_FARMACIA_KARI
 act6_Farmacia
+
+
+
+
+<img width="947" height="471" alt="image" src="https://github.com/user-attachments/assets/b608ab4a-5f9a-43cc-b27b-ae1c5ecf4b01" />
+
 <img width="1913" height="905" alt="image" src="https://github.com/user-attachments/assets/4abc1b25-7e64-4c1e-9cd7-638f40d16b2d" />
 <img width="1897" height="915" alt="image" src="https://github.com/user-attachments/assets/29c31da3-d526-41d1-a0fb-a42a3104f445" />
 <img width="1911" height="870" alt="image" src="https://github.com/user-attachments/assets/722f7338-f08a-45e9-b383-8707a18f1ffe" />
